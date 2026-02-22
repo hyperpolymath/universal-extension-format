@@ -289,3 +289,8 @@ Inspired by:
 **Status:** Concept with formal validation
 
 **Not vaporware - backed by property tests and existing implementations.**
+
+
+== Architecture
+
+See link:TOPOLOGY.md[TOPOLOGY.md] for a visual architecture map and completion dashboard.
