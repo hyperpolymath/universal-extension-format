@@ -1,3 +1,4 @@
+<!-- SPDX-License-Identifier: PMPL-1.0-or-later -->
 # Analysis Index: The "Compile-to-Many" Pattern
 
 This directory contains the comprehensive analysis of the "compile-to-many" architectural pattern and its applications across multiple domains.

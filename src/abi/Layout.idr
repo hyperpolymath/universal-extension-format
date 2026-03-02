@@ -1,13 +1,14 @@
-||| Memory Layout Proofs
+-- SPDX-License-Identifier: PMPL-1.0-or-later
+||| Memory Layout Proofs for Universal Extension Format (UXF)
 |||
 ||| This module provides formal proofs about memory layout, alignment,
 ||| and padding for C-compatible structs.
 |||
 ||| @see https://en.wikipedia.org/wiki/Data_structure_alignment
 
-module {{PROJECT}}.ABI.Layout
+module UXF.ABI.Layout
 
-import {{PROJECT}}.ABI.Types
+import UXF.ABI.Types
 import Data.Vect
 import Data.So
 

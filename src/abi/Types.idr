@@ -1,14 +1,12 @@
-||| ABI Type Definitions Template
+-- SPDX-License-Identifier: PMPL-1.0-or-later
+||| ABI Type Definitions for Universal Extension Format (UXF)
 |||
-||| This module defines the Application Binary Interface (ABI) for this library.
+||| This module defines the Application Binary Interface (ABI) for UXF.
 ||| All type definitions include formal proofs of correctness.
-|||
-||| Replace {{PROJECT}} with your project name.
-||| Replace {{TYPES}} with your actual type definitions.
 |||
 ||| @see https://idris2.readthedocs.io for Idris2 documentation
 
-module {{PROJECT}}.ABI.Types
+module UXF.ABI.Types
 
 import Data.Bits
 import Data.So

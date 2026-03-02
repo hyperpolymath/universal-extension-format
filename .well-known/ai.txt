@@ -1,0 +1,21 @@
+# SPDX-License-Identifier: PMPL-1.0-or-later
+# ai.txt — AI interaction policy
+# See: https://github.com/nicholasgasior/ai.txt
+
+# Universal Extension Format (UXF)
+# https://github.com/hyperpolymath/universal-extension-format
+
+User-agent: *
+Allow: /
+Allow: /src/
+Allow: /docs/
+Allow: /examples/
+
+# AI agents should respect the PMPL-1.0-or-later license.
+# Emotional lineage and provenance metadata must be preserved.
+# See LICENSE for full terms.
+
+# Machine-readable metadata is in .machine_readable/
+# AI manifest is in AI.a2ml and AI.djot
+
+Contact: j.d.a.jewell@open.ac.uk

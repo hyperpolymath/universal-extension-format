@@ -1,13 +1,22 @@
+# Contributing to Universal Extension Format (UXF)
+
+<!-- SPDX-License-Identifier: PMPL-1.0-or-later -->
+
+Thank you for your interest in contributing to Universal Extension Format!
+
+## Getting Started
+
+```bash
 # Clone the repository
-git clone https://{{FORGE}}/{{OWNER}}/{{REPO}}.git
-cd {{REPO}}
+git clone https://github.com/hyperpolymath/universal-extension-format.git
+cd universal-extension-format
 
 # Using Nix (recommended for reproducibility)
 nix develop
 
 # Or using toolbox/distrobox
-toolbox create {{REPO}}-dev
-toolbox enter {{REPO}}-dev
+toolbox create universal-extension-format-dev
+toolbox enter universal-extension-format-dev
 # Install dependencies manually
 
 # Verify setup
@@ -17,7 +26,7 @@ just test    # Run test suite
 
 ### Repository Structure
 ```
-{{REPO}}/
+universal-extension-format/
 ├── src/                 # Source code (Perimeter 1-2)
 ├── lib/                 # Library code (Perimeter 1-2)
 ├── extensions/          # Extensions (Perimeter 2)
@@ -53,7 +62,7 @@ just test    # Run test suite
 
 **Before reporting**:
 1. Search existing issues
-2. Check if it's already fixed in `{{MAIN_BRANCH}}`
+2. Check if it's already fixed in `main`
 3. Determine which perimeter the bug affects
 
 **When reporting**:
@@ -86,10 +95,10 @@ Use the [feature request template](.github/ISSUE_TEMPLATE/feature_request.md) an
 
 Look for issues labelled:
 
-- [`good first issue`](https://{{FORGE}}/{{OWNER}}/{{REPO}}/labels/good%20first%20issue) — Simple Perimeter 3 tasks
-- [`help wanted`](https://{{FORGE}}/{{OWNER}}/{{REPO}}/labels/help%20wanted) — Community help needed
-- [`documentation`](https://{{FORGE}}/{{OWNER}}/{{REPO}}/labels/documentation) — Docs improvements
-- [`perimeter-3`](https://{{FORGE}}/{{OWNER}}/{{REPO}}/labels/perimeter-3) — Community sandbox scope
+- [`good first issue`](https://github.com/hyperpolymath/universal-extension-format/labels/good%20first%20issue) -- Simple Perimeter 3 tasks
+- [`help wanted`](https://github.com/hyperpolymath/universal-extension-format/labels/help%20wanted) -- Community help needed
+- [`documentation`](https://github.com/hyperpolymath/universal-extension-format/labels/documentation) -- Docs improvements
+- [`perimeter-3`](https://github.com/hyperpolymath/universal-extension-format/labels/perimeter-3) -- Community sandbox scope
 
 ---
 
@@ -114,3 +123,8 @@ We follow [Conventional Commits](https://www.conventionalcommits.org/):
 [optional body]
 
 [optional footer]
+```
+
+## License
+
+By contributing, you agree that your contributions will be licensed under PMPL-1.0-or-later.

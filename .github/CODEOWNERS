@@ -1,0 +1,10 @@
+# SPDX-License-Identifier: PMPL-1.0-or-later
+# CODEOWNERS -- https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default owner for everything in the repo
+* @hyperpolymath
+
+# Security-sensitive files require explicit review
+SECURITY.md @hyperpolymath
+.github/workflows/ @hyperpolymath
+.well-known/ @hyperpolymath

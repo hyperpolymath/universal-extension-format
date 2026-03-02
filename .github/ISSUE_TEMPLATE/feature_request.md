@@ -1,4 +1,5 @@
 ---
+# SPDX-License-Identifier: PMPL-1.0-or-later
 name: Feature request
 about: Suggest an idea for this project
 title: ''

@@ -1,21 +1,34 @@
 // SPDX-License-Identifier: PMPL-1.0-or-later
-= YOUR Template Repo Roadmap
+= Universal Extension Format (UXF) Roadmap
 
 == Current Status
 
-Initial development phase.
+Concept phase with formal validation.
 
 == Milestones
 
-=== v0.1.0 - Foundation
-* [ ] Core functionality
-* [ ] Basic documentation
-* [ ] CI/CD pipeline
+=== Phase 1 - Browser-Only (6 months)
+* [ ] A2ML parser for extension definitions
+* [ ] Abstract IR for browser capabilities
+* [ ] Firefox adapter (Manifest V2/V3)
+* [ ] Chrome adapter (Manifest V3)
+* [ ] Nickel type-safe contracts
+* [ ] K9-SVC self-validation
+* [ ] Proof-of-concept: Port existing extension (FireFlag)
 
-=== v1.0.0 - Stable Release
-* [ ] Full feature set
-* [ ] Comprehensive tests
-* [ ] Production ready
+=== Phase 2 - Expand Platforms (6 months)
+* [ ] Safari adapter
+* [ ] VSCode adapter
+* [ ] Edge adapter (Chromium-based)
+* [ ] Brave adapter (Chromium-based)
+* [ ] Performance benchmarks
+
+=== Phase 3 - Beyond Browsers (12+ months)
+* [ ] WordPress plugin adapter
+* [ ] Zotero adapter
+* [ ] Obsidian plugin adapter
+* [ ] JetBrains IDE adapter
+* [ ] Full platform coverage
 
 == Future Directions
 

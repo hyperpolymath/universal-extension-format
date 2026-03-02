@@ -1,4 +1,5 @@
-# RSR-template-repo - Editor Configuration
+# universal-extension-format - Editor Configuration
+# SPDX-License-Identifier: PMPL-1.0-or-later
 # https://editorconfig.org
 
 root = true

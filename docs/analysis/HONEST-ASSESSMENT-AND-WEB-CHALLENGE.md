@@ -1,3 +1,4 @@
+<!-- SPDX-License-Identifier: PMPL-1.0-or-later -->
 # Honest Assessment: The "Compile-to-Many" Pattern
 
 ## protocol-squisher: The Most Interesting Case

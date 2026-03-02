@@ -1,3 +1,4 @@
+<!-- SPDX-License-Identifier: PMPL-1.0-or-later -->
 # The Unified Architecture Pattern
 ## You're Already Using It Across Multiple Projects!
 

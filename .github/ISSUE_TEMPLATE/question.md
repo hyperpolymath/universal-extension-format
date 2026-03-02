@@ -1,4 +1,5 @@
 ---
+# SPDX-License-Identifier: PMPL-1.0-or-later
 name: Question
 about: Ask a question about usage or behaviour
 title: "[QUESTION]: "

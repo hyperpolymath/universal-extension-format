@@ -1,3 +1,4 @@
+<!-- SPDX-License-Identifier: PMPL-1.0-or-later -->
 # API Protocol Compiler: GraphQL ↔ REST ↔ gRPC
 
 ## The Idea

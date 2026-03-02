@@ -1,37 +1,43 @@
-;; SPDX-License-Identifier: AGPL-3.0-or-later
-;; STATE.scm - Project state tracking for rsr-template-repo
+;; SPDX-License-Identifier: PMPL-1.0-or-later
+;; STATE.scm - Project state tracking for universal-extension-format
 ;; Media-Type: application/vnd.state+scm
 
-(define-state rsr-template-repo
+(define-state universal-extension-format
   (metadata
     (version "0.1.0")
     (schema-version "1.0.0")
-    (created "2026-01-30")
-    (updated "2026-01-30")
-    (project "rsr-template-repo")
-    (repo "hyperpolymath/rsr-template-repo"))
+    (created "2025-01-01")
+    (updated "2026-03-02")
+    (project "universal-extension-format")
+    (repo "hyperpolymath/universal-extension-format"))
 
   (project-context
-    (name "rsr-template-repo")
-    (tagline "Hyperpolymath ecosystem project")
-    (tech-stack ()))
+    (name "universal-extension-format")
+    (tagline "One abstract extension definition compiled to all platforms")
+    (tech-stack (idris2 zig rescript nickel)))
 
   (current-position
-    (phase "initialization")
-    (overall-completion 5)
-    (components ())
-    (working-features ()))
+    (phase "concept")
+    (overall-completion 40)
+    (components
+      ("abstract-ir" "a2ml-parser" "echidna-tests" "idris2-proofs"
+       "firefox-adapter" "chrome-adapter" "abi-ffi-layer"))
+    (working-features
+      ("echidna-property-tests" "compile-to-many-pattern")))
 
   (route-to-mvp
     (milestones
-      ((name "Initial Setup")
+      ((name "Phase 1: Browser-Only")
        (status "in-progress")
-       (completion 50)
+       (completion 40)
        (items
-         ("Initialize repository structure" . done)
-         ("Add standard workflows" . done)
-         ("Define project scope" . todo)
-         ("Set up development environment" . todo)))))
+         ("A2ML parser for extension definitions" . todo)
+         ("Abstract IR for browser capabilities" . done)
+         ("Firefox adapter (Manifest V2/V3)" . in-progress)
+         ("Chrome adapter (Manifest V3)" . in-progress)
+         ("Nickel type-safe contracts" . todo)
+         ("ECHIDNA property tests" . done)
+         ("Idris2 formal proofs" . in-progress)))))
 
   (blockers-and-issues
     (critical ())
@@ -41,14 +47,14 @@
 
   (critical-next-actions
     (immediate
-      "Define project scope and objectives"
-      "Update README.adoc with project description")
+      "Complete Firefox adapter"
+      "Complete Chrome adapter")
     (this-week
-      "Set up development environment"
-      "Create initial architecture design")
+      "Implement A2ML parser for extension definitions"
+      "Add Nickel type-safe contracts")
     (this-month
-      "Implement core functionality"
-      "Add comprehensive tests"))
+      "Proof-of-concept: Port existing extension (FireFlag)"
+      "Complete Phase 1 browser adapters"))
 
   (session-history ()))
 

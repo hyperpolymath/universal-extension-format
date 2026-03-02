@@ -274,7 +274,7 @@ PMPL-1.0-or-later. See link:LICENSE[LICENSE] for details.
 
 == Author
 
-Jonathan D.A. Jewell <jonathan.jewell@open.ac.uk>
+Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 
 == Acknowledgments
 
