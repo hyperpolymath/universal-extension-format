@@ -154,7 +154,7 @@ Abstract IR (capabilities)
 
 ### 7. ECHIDNA Property Tests ✅
 
-**Test Suite:** `/mnt/eclipse/repos/echidna/tests/property_tests.rs`
+**Test Suite:** `$REPOS_DIR/echidna/tests/property_tests.rs`
 
 **Results:** 7 of 8 tests PASSED
 
@@ -171,7 +171,7 @@ Abstract IR (capabilities)
 
 **Verdict:** The "compile-to-many" pattern is **formally testable and provably correct**
 
-**Idris2 Integration:** `/mnt/eclipse/repos/idris2-echidna/`
+**Idris2 Integration:** `$REPOS_DIR/idris2-echidna/`
 - Dependent-type proofs of transformation correctness
 - FFI to 12 theorem provers (Z3, CVC5, Coq, Lean, Isabelle, etc.)
 - Formal soundness guarantees
@@ -291,7 +291,7 @@ ReScript        Rust           Julia          Idris2
 
 ### Compatibility Classes (protocol-squisher)
 
-From `/mnt/eclipse/repos/protocol-squisher/README.adoc`:
+From `$REPOS_DIR/protocol-squisher/README.adoc`:
 
 | Class | Description | Example |
 |-------|-------------|---------|
@@ -407,8 +407,8 @@ This last one could be **paradigm-shifting** for the entire software industry.
 - **ECHIDNA property tests:** 7/8 PASSED ✅
 - **Idris2 formal proofs:** Available via idris2-echidna
 - **Existing implementations:** HAR, HTTP-Gateway (working in production)
-- **Test suite location:** `/mnt/eclipse/repos/echidna/tests/property_tests.rs`
-- **Proof framework:** `/mnt/eclipse/repos/idris2-echidna/`
+- **Test suite location:** `$REPOS_DIR/echidna/tests/property_tests.rs`
+- **Proof framework:** `$REPOS_DIR/idris2-echidna/`
 
 ---
 

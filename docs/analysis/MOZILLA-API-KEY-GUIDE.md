@@ -44,7 +44,7 @@ export AMO_API_KEY="user:12345678:987"
 export AMO_API_SECRET="abc123def456..."
 
 # Use with web-ext
-cd /var/mnt/eclipse/repos/fireflag/extension
+cd /var$REPOS_DIR/fireflag/extension
 
 npx web-ext sign \
   --channel=listed \
