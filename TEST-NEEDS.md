@@ -1,0 +1,29 @@
+# TEST-NEEDS.md — universal-extension-format
+
+## CRG Grade: C — ACHIEVED 2026-04-04
+
+## Current Test State
+
+| Category | Count | Notes |
+|----------|-------|-------|
+| Zig FFI tests | 1 | `ffi/zig/test/integration_test.zig` |
+| Test infrastructure | Present | `tests/` directory structure |
+
+## What's Covered
+
+- [x] Zig FFI integration tests
+- [x] Test framework infrastructure
+
+## Still Missing (for CRG B+)
+
+- [ ] Extension format validation tests
+- [ ] Manifest parsing tests
+- [ ] Browser compatibility tests
+- [ ] Property-based format generation
+- [ ] Performance benchmarks
+
+## Run Tests
+
+```bash
+cd /var/mnt/eclipse/repos/universal-extension-format && cargo test
+```
