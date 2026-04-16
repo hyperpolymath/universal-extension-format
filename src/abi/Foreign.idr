@@ -1,5 +1,5 @@
--- SPDX-License-Identifier: PMPL-1.0-or-later
-||| Foreign Function Interface Declarations for Universal Extension Format (UXF)
+||| SPDX-License-Identifier: PMPL-1.0-or-later
+||| Foreign Function Interface Declarations for UNIVERSAL_EXTENSION_FORMAT
 |||
 ||| This module declares all C-compatible functions that will be
 ||| implemented in the Zig FFI layer.
@@ -7,10 +7,10 @@
 ||| All functions are declared here with type signatures and safety proofs.
 ||| Implementations live in ffi/zig/
 
-module UXF.ABI.Foreign
+module UniversalExtensionFormat.ABI.Foreign
 
-import UXF.ABI.Types
-import UXF.ABI.Layout
+import UniversalExtensionFormat.ABI.Types
+import UniversalExtensionFormat.ABI.Layout
 
 %default total
 
@@ -21,7 +21,7 @@ import UXF.ABI.Layout
 ||| Initialize the library
 ||| Returns a handle to the library instance, or Nothing on failure
 export
-%foreign "C:uxf_init, libuxf"
+%foreign "C:universal_extension_format_init, libuniversal_extension_format"
 prim__init : PrimIO Bits64
 
 ||| Safe wrapper for library initialization
@@ -33,7 +33,7 @@ init = do
 
 ||| Clean up library resources
 export
-%foreign "C:uxf_free, libuxf"
+%foreign "C:universal_extension_format_free, libuniversal_extension_format"
 prim__free : Bits64 -> PrimIO ()
 
 ||| Safe wrapper for cleanup
@@ -47,7 +47,7 @@ free h = primIO (prim__free (handlePtr h))
 
 ||| Example operation: process data
 export
-%foreign "C:uxf_process, libuxf"
+%foreign "C:universal_extension_format_process, libuniversal_extension_format"
 prim__process : Bits64 -> Bits32 -> PrimIO Bits32
 
 ||| Safe wrapper with error handling
@@ -70,12 +70,12 @@ prim__getString : Bits64 -> String
 
 ||| Free C string
 export
-%foreign "C:uxf_free_string, libuxf"
+%foreign "C:universal_extension_format_free_string, libuniversal_extension_format"
 prim__freeString : Bits64 -> PrimIO ()
 
 ||| Get string result from library
 export
-%foreign "C:uxf_get_string, libuxf"
+%foreign "C:universal_extension_format_get_string, libuniversal_extension_format"
 prim__getResult : Bits64 -> PrimIO Bits64
 
 ||| Safe string getter
@@ -96,7 +96,7 @@ getString h = do
 
 ||| Process array data
 export
-%foreign "C:uxf_process_array, libuxf"
+%foreign "C:universal_extension_format_process_array, libuniversal_extension_format"
 prim__processArray : Bits64 -> Bits64 -> Bits32 -> PrimIO Bits32
 
 ||| Safe array processor
@@ -123,7 +123,7 @@ processArray h buf len = do
 
 ||| Get last error message
 export
-%foreign "C:uxf_last_error, libuxf"
+%foreign "C:universal_extension_format_last_error, libuniversal_extension_format"
 prim__lastError : PrimIO Bits64
 
 ||| Retrieve last error as string
@@ -150,7 +150,7 @@ errorDescription NullPointer = "Null pointer"
 
 ||| Get library version
 export
-%foreign "C:uxf_version, libuxf"
+%foreign "C:universal_extension_format_version, libuniversal_extension_format"
 prim__version : PrimIO Bits64
 
 ||| Get version as string
@@ -162,7 +162,7 @@ version = do
 
 ||| Get library build info
 export
-%foreign "C:uxf_build_info, libuxf"
+%foreign "C:universal_extension_format_build_info, libuniversal_extension_format"
 prim__buildInfo : PrimIO Bits64
 
 ||| Get build information
@@ -183,7 +183,7 @@ Callback = Bits64 -> Bits32 -> Bits32
 
 ||| Register a callback
 export
-%foreign "C:uxf_register_callback, libuxf"
+%foreign "C:universal_extension_format_register_callback, libuniversal_extension_format"
 prim__registerCallback : Bits64 -> AnyPtr -> PrimIO Bits32
 
 ||| Safe callback registration
@@ -206,7 +206,7 @@ registerCallback h cb = do
 
 ||| Check if library is initialized
 export
-%foreign "C:uxf_is_initialized, libuxf"
+%foreign "C:universal_extension_format_is_initialized, libuniversal_extension_format"
 prim__isInitialized : Bits64 -> PrimIO Bits32
 
 ||| Check initialization status
