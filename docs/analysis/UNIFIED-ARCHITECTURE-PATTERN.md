@@ -257,7 +257,7 @@ end
 ### 2. Universal Build Pipeline (Just)
 
 ```bash
-# Shared justfile recipes
+# Shared Justfile recipes
 gen-all-targets SOURCE:
     @echo "Compiling {{SOURCE}} to all targets..."
     hyperpolymath compile {{SOURCE}} --all

@@ -96,7 +96,7 @@ just release
 ### Phase 1: K9-SVC Prototype (Nickel)
 - [x] Create fireflag-manifest.k9 with platform variants
 - [ ] Add Nickel validation contracts
-- [ ] Integrate into justfile
+- [ ] Integrate into Justfile
 - [ ] Test generation pipeline
 
 ### Phase 2: A2ML Integration
@@ -216,6 +216,6 @@ just gen-manifests
 
 Would you like me to:
 1. Create the working K9-SVC manifest for fireflag?
-2. Add it to your justfile?
+2. Add it to your Justfile?
 3. Test the generation pipeline?
 4. Create the A2ML version?
