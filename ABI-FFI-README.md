@@ -1,4 +1,4 @@
-<!-- SPDX-License-Identifier: PMPL-1.0-or-later -->
+<!-- SPDX-License-Identifier: MPL-2.0 -->
 # Universal Extension Format (UXF) ABI/FFI Documentation
 
 ## Overview
@@ -373,7 +373,7 @@ When modifying the ABI/FFI:
 
 ## License
 
-PMPL-1.0-or-later. See [LICENSE](LICENSE) for details.
+MPL-2.0. See [LICENSE](LICENSE) for details.
 
 ## See Also
 

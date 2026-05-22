@@ -1,4 +1,4 @@
-# SPDX-License-Identifier: PMPL-1.0-or-later
+# SPDX-License-Identifier: MPL-2.0
 # humans.txt — https://humanstxt.org/
 
 /* TEAM */
@@ -11,4 +11,4 @@ Location: United Kingdom
 Last update: 2026-03-02
 Language: English
 Standards: Rhodium Standard Repositories (RSR)
-License: PMPL-1.0-or-later
+License: MPL-2.0

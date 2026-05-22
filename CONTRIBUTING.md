@@ -1,6 +1,6 @@
 # Contributing to Universal Extension Format (UXF)
 
-<!-- SPDX-License-Identifier: PMPL-1.0-or-later -->
+<!-- SPDX-License-Identifier: MPL-2.0 -->
 
 Thank you for your interest in contributing to Universal Extension Format!
 
@@ -127,4 +127,4 @@ We follow [Conventional Commits](https://www.conventionalcommits.org/):
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under PMPL-1.0-or-later.
+By contributing, you agree that your contributions will be licensed under MPL-2.0.

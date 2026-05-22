@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: PMPL-1.0-or-later
+// SPDX-License-Identifier: MPL-2.0
 = Universal Extension Format (UXF)
 :toc: macro
 :toclevels: 3
@@ -270,7 +270,7 @@ This could eliminate manual FFI, unsafe blocks, and brittle bindings across the 
 
 == License
 
-PMPL-1.0-or-later. See link:LICENSE[LICENSE] for details.
+MPL-2.0. See link:LICENSE[LICENSE] for details.
 
 == Author
 

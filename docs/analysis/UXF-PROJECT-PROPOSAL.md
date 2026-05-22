@@ -1,4 +1,4 @@
-<!-- SPDX-License-Identifier: PMPL-1.0-or-later -->
+<!-- SPDX-License-Identifier: MPL-2.0 -->
 # Universal Extension Format (UXF) - Project Proposal
 
 ## Vision
@@ -92,13 +92,13 @@ universal-extension-format/
 
 ```a2ml
 # extension.uxf
-# SPDX-License-Identifier: PMPL-1.0-or-later
+# SPDX-License-Identifier: MPL-2.0
 
 @metadata:
 name: MyExtension
 version: 1.0.0
 author: You <you@example.com>
-license: PMPL-1.0-or-later
+license: MPL-2.0
 @end
 
 @capabilities:
