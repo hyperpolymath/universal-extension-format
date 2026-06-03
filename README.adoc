@@ -1,9 +1,12 @@
 // SPDX-License-Identifier: MPL-2.0
+// Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 = Universal Extension Format (UXF)
+image:https://img.shields.io/badge/OpenSSF-Best_Practices-green?logo=openssourcesecurity[OpenSSF Best Practices,link="https://www.bestpractices.dev/en/projects/new?repo_url=https://github.com/hyperpolymath/universal-extension-format"]
+
 :toc: macro
 :toclevels: 3
 
-image:https://img.shields.io/badge/License-PMPL--1.0-blue.svg[License: PMPL-1.0,link="https://github.com/hyperpolymath/palimpsest-license"]
+image:https://img.shields.io/badge/License-MPL_2.0-blue.svg[License: MPL-2.0,link="https://opensource.org/licenses/MPL-2.0"]
 image:https://img.shields.io/badge/Status-Concept-yellow.svg[Status]
 image:https://img.shields.io/badge/Pattern-Compile--to--Many-brightgreen.svg[Pattern]
 
@@ -270,7 +273,9 @@ This could eliminate manual FFI, unsafe blocks, and brittle bindings across the 
 
 == License
 
-MPL-2.0. See link:LICENSE[LICENSE] for details.
+This project is licensed under the Mozilla Public License, v. 2.0. See the `LICENSE` file for details.
+
+SPDX-License-Identifier: MPL-2.0
 
 == Author
 
