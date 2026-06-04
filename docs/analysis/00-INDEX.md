@@ -1,4 +1,7 @@
-<!-- SPDX-License-Identifier: MPL-2.0 -->
+<!--
+SPDX-License-Identifier: MPL-2.0
+Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+-->
 # Analysis Index: The "Compile-to-Many" Pattern
 
 This directory contains the comprehensive analysis of the "compile-to-many" architectural pattern and its applications across multiple domains.

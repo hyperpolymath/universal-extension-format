@@ -1,6 +1,8 @@
+<!--
+SPDX-License-Identifier: MPL-2.0
+Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+-->
 # Contributing to Universal Extension Format (UXF)
-
-<!-- SPDX-License-Identifier: MPL-2.0 -->
 
 Thank you for your interest in contributing to Universal Extension Format!
 
