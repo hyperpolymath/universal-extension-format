@@ -1,4 +1,4 @@
-<!-- SPDX-License-Identifier: MPL-2.0 -->
+<!-- SPDX-License-Identifier: CC-BY-SA-4.0 -->
 # Universal Extension Format (UXF) - Project Proposal
 
 ## Vision
@@ -92,7 +92,7 @@ universal-extension-format/
 
 ```a2ml
 # extension.uxf
-# SPDX-License-Identifier: MPL-2.0
+# SPDX-License-Identifier: CC-BY-SA-4.0
 
 @metadata:
 name: MyExtension
