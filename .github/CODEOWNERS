@@ -1,10 +1,4 @@
 # SPDX-License-Identifier: MPL-2.0
-# CODEOWNERS -- https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
-
-# Default owner for everything in the repo
-* @hyperpolymath
-
-# Security-sensitive files require explicit review
-SECURITY.md @hyperpolymath
-.github/workflows/ @hyperpolymath
-.well-known/ @hyperpolymath
+# Solo-maintained hyperpolymath repo: no owner lines by policy.
+# See hyperpolymath/standards CODEOWNERS-POLICY.adoc (Rule 1).
+# Sole-maintainer review is moot; SPDX headers carry attribution.
