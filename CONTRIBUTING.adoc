@@ -1,12 +1,12 @@
-# Contributing to Universal Extension Format (UXF)
+== Contributing to Universal Extension Format (UXF)
 
-<!-- SPDX-License-Identifier: CC-BY-SA-4.0 -->
+Thank you for your interest in contributing to Universal Extension
+Format!
 
-Thank you for your interest in contributing to Universal Extension Format!
+=== Getting Started
 
-## Getting Started
-
-```bash
+[source,bash]
+----
 # Clone the repository
 git clone https://github.com/hyperpolymath/universal-extension-format.git
 cd universal-extension-format
@@ -22,10 +22,11 @@ toolbox enter universal-extension-format-dev
 # Verify setup
 just check   # or: cargo check / mix compile / etc.
 just test    # Run test suite
-```
+----
 
-### Repository Structure
-```
+==== Repository Structure
+
+....
 universal-extension-format/
 ├── src/                 # Source code (Perimeter 1-2)
 ├── lib/                 # Library code (Perimeter 1-2)
@@ -52,79 +53,85 @@ universal-extension-format/
 ├── SECURITY.md
 ├── flake.nix            # Nix flake (Perimeter 1)
 └── Justfile             # Task runner (Perimeter 1)
-```
+....
 
----
+'''''
 
-## How to Contribute
+=== How to Contribute
 
-### Reporting Bugs
+==== Reporting Bugs
 
-**Before reporting**:
-1. Search existing issues
-2. Check if it's already fixed in `main`
-3. Determine which perimeter the bug affects
+*Before reporting*: 1. Search existing issues 2. Check if it’s already
+fixed in `+main+` 3. Determine which perimeter the bug affects
 
-**When reporting**:
+*When reporting*:
 
-Use the [bug report template](.github/ISSUE_TEMPLATE/bug_report.md) and include:
+Use the link:.github/ISSUE_TEMPLATE/bug_report.md[bug report template]
+and include:
 
-- Clear, descriptive title
-- Environment details (OS, versions, toolchain)
-- Steps to reproduce
-- Expected vs actual behaviour
-- Logs, screenshots, or minimal reproduction
+* Clear, descriptive title
+* Environment details (OS, versions, toolchain)
+* Steps to reproduce
+* Expected vs actual behaviour
+* Logs, screenshots, or minimal reproduction
 
-### Suggesting Features
+==== Suggesting Features
 
-**Before suggesting**:
-1. Check the [roadmap](ROADMAP.md) if available
-2. Search existing issues and discussions
-3. Consider which perimeter the feature belongs to
+*Before suggesting*: 1. Check the link:ROADMAP.md[roadmap] if available
+2. Search existing issues and discussions 3. Consider which perimeter
+the feature belongs to
 
-**When suggesting**:
+*When suggesting*:
 
-Use the [feature request template](.github/ISSUE_TEMPLATE/feature_request.md) and include:
+Use the link:.github/ISSUE_TEMPLATE/feature_request.md[feature request
+template] and include:
 
-- Problem statement (what pain point does this solve?)
-- Proposed solution
-- Alternatives considered
-- Which perimeter this affects
+* Problem statement (what pain point does this solve?)
+* Proposed solution
+* Alternatives considered
+* Which perimeter this affects
 
-### Your First Contribution
+==== Your First Contribution
 
 Look for issues labelled:
 
-- [`good first issue`](https://github.com/hyperpolymath/universal-extension-format/labels/good%20first%20issue) -- Simple Perimeter 3 tasks
-- [`help wanted`](https://github.com/hyperpolymath/universal-extension-format/labels/help%20wanted) -- Community help needed
-- [`documentation`](https://github.com/hyperpolymath/universal-extension-format/labels/documentation) -- Docs improvements
-- [`perimeter-3`](https://github.com/hyperpolymath/universal-extension-format/labels/perimeter-3) -- Community sandbox scope
+* https://github.com/hyperpolymath/universal-extension-format/labels/good%20first%20issue[`+good first issue+`]
+– Simple Perimeter 3 tasks
+* https://github.com/hyperpolymath/universal-extension-format/labels/help%20wanted[`+help wanted+`]
+– Community help needed
+* https://github.com/hyperpolymath/universal-extension-format/labels/documentation[`+documentation+`]
+– Docs improvements
+* https://github.com/hyperpolymath/universal-extension-format/labels/perimeter-3[`+perimeter-3+`]
+– Community sandbox scope
 
----
+'''''
 
-## Development Workflow
+=== Development Workflow
 
-### Branch Naming
-```
+==== Branch Naming
+
+....
 docs/short-description       # Documentation (P3)
 test/what-added              # Test additions (P3)
 feat/short-description       # New features (P2)
 fix/issue-number-description # Bug fixes (P2)
 refactor/what-changed        # Code improvements (P2)
 security/what-fixed          # Security fixes (P1-2)
-```
+....
 
-### Commit Messages
+==== Commit Messages
 
-We follow [Conventional Commits](https://www.conventionalcommits.org/):
-```
+We follow https://www.conventionalcommits.org/[Conventional Commits]:
+
+....
 <type>(<scope>): <description>
 
 [optional body]
 
 [optional footer]
-```
+....
 
-## License
+=== License
 
-By contributing, you agree that your contributions will be licensed under MPL-2.0.
+By contributing, you agree that your contributions will be licensed
+under MPL-2.0.
