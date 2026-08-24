@@ -1,11 +1,11 @@
-<!-- SPDX-License-Identifier: CC-BY-SA-4.0 -->
-# API Protocol Compiler: GraphQL ↔ REST ↔ gRPC
+== API Protocol Compiler: GraphQL ↔ REST ↔ gRPC
 
-## The Idea
+=== The Idea
 
-**One abstract API definition** → **Live interpreter** for GraphQL, REST, and gRPC
+*One abstract API definition* → *Live interpreter* for GraphQL, REST,
+and gRPC
 
-```
+....
 ┌────────────────────────────────────────┐
 │ Abstract API Definition (A2ML)         │
 │                                        │
@@ -27,13 +27,14 @@
     │ GraphQL │ │  REST   │ │  gRPC   │
     │ Endpoint│ │Endpoints│ │ Service │
     └─────────┘ └─────────┘ └─────────┘
-```
+....
 
-## Example: User Service
+=== Example: User Service
 
-### Abstract Definition
+==== Abstract Definition
 
-```a2ml
+[source,a2ml]
+----
 @api:user-service
 version: 1.0.0
 protocol: multi
@@ -89,13 +90,14 @@ grpc:
   port: 50051
   reflection: true
 @end
-```
+----
 
-### Generated Outputs (Live Interpreter)
+==== Generated Outputs (Live Interpreter)
 
-#### 1. GraphQL Schema (Auto-Generated)
+===== 1. GraphQL Schema (Auto-Generated)
 
-```graphql
+[source,graphql]
+----
 type User {
   id: ID!
   name: String!
@@ -120,11 +122,12 @@ type Mutation {
 
 # Error handling
 union UserResult = User | NotFoundError | ValidationError
-```
+----
 
-**Live Endpoint**: `POST /graphql`
+*Live Endpoint*: `+POST /graphql+`
 
-```graphql
+[source,graphql]
+----
 query {
   getUser(id: "123") {
     id
@@ -132,19 +135,20 @@ query {
     email
   }
 }
-```
+----
 
-#### 2. REST Endpoints (Auto-Generated)
+===== 2. REST Endpoints (Auto-Generated)
 
-```
+....
 GET    /api/v1/users/:id           # get_user
 POST   /api/v1/users                # create_user
 GET    /api/v1/users?filter=...    # list_users
-```
+....
 
-**OpenAPI Spec** (also auto-generated):
+*OpenAPI Spec* (also auto-generated):
 
-```yaml
+[source,yaml]
+----
 /api/v1/users/{id}:
   get:
     operationId: getUser
@@ -175,11 +179,12 @@ GET    /api/v1/users?filter=...    # list_users
             properties:
               name: { type: string }
               email: { type: string, format: email }
-```
+----
 
-#### 3. gRPC Proto (Auto-Generated)
+===== 3. gRPC Proto (Auto-Generated)
 
-```protobuf
+[source,protobuf]
+----
 syntax = "proto3";
 
 package user_service;
@@ -215,20 +220,22 @@ service UserService {
   rpc CreateUser(CreateUserRequest) returns (User);
   rpc ListUsers(ListUsersRequest) returns (ListUsersResponse);
 }
-```
+----
 
-**Live Endpoint**: `grpc://localhost:50051`
+*Live Endpoint*: `+grpc://localhost:50051+`
 
-```go
+[source,go]
+----
 client := pb.NewUserServiceClient(conn)
 user, err := client.GetUser(ctx, &pb.GetUserRequest{Id: "123"})
-```
+----
 
-## Live Interpreter Architecture
+=== Live Interpreter Architecture
 
-### Runtime Components
+==== Runtime Components
 
-```elixir
+[source,elixir]
+----
 # Elixir-based live interpreter
 defmodule APIInterpreter do
   @moduledoc """
@@ -254,11 +261,12 @@ defmodule APIInterpreter do
     |> cache_if_idempotent(operation_def)
   end
 end
-```
+----
 
-### Protocol Adapters
+==== Protocol Adapters
 
-```elixir
+[source,elixir]
+----
 defmodule GraphQLAdapter do
   def execute(%Operation{name: "get_user"}, %{id: id}) do
     # GraphQL-specific execution
@@ -285,40 +293,46 @@ defmodule GRPCAdapter do
     |> encode_protobuf()
   end
 end
-```
+----
 
-## Protocol Translation (Live)
+=== Protocol Translation (Live)
 
-### Same Call, Three Protocols
+==== Same Call, Three Protocols
 
-**GraphQL:**
-```graphql
+*GraphQL:*
+
+[source,graphql]
+----
 POST /graphql
 {
   query: "{ getUser(id: \"123\") { name email } }"
 }
-```
+----
 
-**REST:**
-```http
+*REST:*
+
+[source,http]
+----
 GET /api/v1/users/123
 Accept: application/json
-```
+----
 
-**gRPC:**
-```
+*gRPC:*
+
+....
 UserService.GetUser({id: "123"})
-```
+....
 
-**All three** → Same underlying operation → Same business logic → Different wire formats
+*All three* → Same underlying operation → Same business logic →
+Different wire formats
 
-## Advanced Features
+=== Advanced Features
 
-### 1. Protocol Bridging (Live)
+==== 1. Protocol Bridging (Live)
 
 Client uses GraphQL, backend uses gRPC:
 
-```
+....
 GraphQL Request
     ↓
 Interpreter parses to abstract operation
@@ -330,10 +344,12 @@ Calls gRPC backend
 Translates response back to GraphQL
     ↓
 Returns to client
-```
+....
 
-**Example:**
-```graphql
+*Example:*
+
+[source,graphql]
+----
 # Client sends GraphQL
 query { getUser(id: "123") { name } }
 
@@ -345,13 +361,14 @@ User { id: "123", name: "Alice", ... }
 
 # Interpreter translates back to GraphQL JSON
 { "data": { "getUser": { "name": "Alice" } } }
-```
+----
 
-### 2. Multi-Protocol Federation
+==== 2. Multi-Protocol Federation
 
-**Service A** (GraphQL) + **Service B** (gRPC) → Unified API:
+*Service A* (GraphQL) + *Service B* (gRPC) → Unified API:
 
-```a2ml
+[source,a2ml]
+----
 @federation:api-gateway
 
 @services:
@@ -378,13 +395,14 @@ get_user_orders:
       3. products = product-service.get_many(order.product_ids) # REST
   - output: { user: User, orders: [Order], products: [Product] }
 @end
-```
+----
 
-**Client calls ONE operation**, interpreter orchestrates THREE protocols!
+*Client calls ONE operation*, interpreter orchestrates THREE protocols!
 
-### 3. Type-Safe Protocol Switching
+==== 3. Type-Safe Protocol Switching
 
-```nickel
+[source,nickel]
+----
 # Nickel contract ensures type compatibility
 let APIOperation = {
   name | String,
@@ -398,15 +416,16 @@ let validate_operation = fun op =>
   std.array.all (fun proto =>
     check_protocol_compatibility(op, proto)
   ) op.protocols
-```
+----
 
-## Integration with Existing Projects
+=== Integration with Existing Projects
 
-### HAR + API Compiler Integration
+==== HAR + API Compiler Integration
 
-**Use Case**: Deploy API infrastructure with multi-protocol support
+*Use Case*: Deploy API infrastructure with multi-protocol support
 
-```a2ml
+[source,a2ml]
+----
 @infrastructure:api-deployment
 @api:user-service
 
@@ -433,13 +452,14 @@ elixir:
   rest_routes: router.ex
   grpc_service: service.proto
 @end
-```
+----
 
-### HTTP-Gateway + API Compiler Integration
+==== HTTP-Gateway + API Compiler Integration
 
-**Use Case**: Enforce HTTP verb policies on REST endpoints
+*Use Case*: Enforce HTTP verb policies on REST endpoints
 
-```a2ml
+[source,a2ml]
+----
 @api:user-service
 @http-policy:embedded
 
@@ -469,57 +489,58 @@ nginx:
   config: verb-policy.conf
   integrate_with: rest_routes
 @end
-```
+----
 
-## Existing Solutions vs. This Approach
+=== Existing Solutions vs. This Approach
 
-| Tool | GraphQL | REST | gRPC | Live Interpreter | Formal Verification |
-|------|---------|------|------|------------------|---------------------|
-| **Swagger/OpenAPI** | ❌ | ✅ | ❌ | ❌ | ❌ |
-| **GraphQL** | ✅ | ⚠️ (via resolvers) | ❌ | ❌ | ❌ |
-| **gRPC-Gateway** | ❌ | ✅ | ✅ | ⚠️ (gRPC→REST only) | ❌ |
-| **Buf** | ⚠️ (generate) | ⚠️ (generate) | ✅ | ❌ | ❌ |
-| **This (API Compiler)** | ✅ | ✅ | ✅ | ✅ | ✅ (Nickel + Idris2) |
+[width="100%",cols="11%,13%,9%,9%,27%,31%",options="header",]
+|===
+|Tool |GraphQL |REST |gRPC |Live Interpreter |Formal Verification
+|*Swagger/OpenAPI* |❌ |✅ |❌ |❌ |❌
+|*GraphQL* |✅ |⚠️ (via resolvers) |❌ |❌ |❌
+|*gRPC-Gateway* |❌ |✅ |✅ |⚠️ (gRPC→REST only) |❌
+|*Buf* |⚠️ (generate) |⚠️ (generate) |✅ |❌ |❌
+|*This (API Compiler)* |✅ |✅ |✅ |✅ |✅ (Nickel + Idris2)
+|===
 
-## Implementation Roadmap
+=== Implementation Roadmap
 
-### Phase 1: Basic Interpreter (3 months)
-- [ ] A2ML API definition parser
-- [ ] GraphQL schema generator
-- [ ] REST endpoint generator
-- [ ] gRPC proto generator
-- [ ] Basic live interpreter (Elixir)
+==== Phase 1: Basic Interpreter (3 months)
 
-### Phase 2: Advanced Features (3 months)
-- [ ] Protocol bridging (GraphQL ↔ REST ↔ gRPC)
-- [ ] Multi-protocol federation
-- [ ] Caching layer
-- [ ] Validation (Nickel contracts)
+* [ ] A2ML API definition parser
+* [ ] GraphQL schema generator
+* [ ] REST endpoint generator
+* [ ] gRPC proto generator
+* [ ] Basic live interpreter (Elixir)
 
-### Phase 3: Formal Verification (6 months)
-- [ ] Idris2 proofs of protocol compatibility
-- [ ] Type-safe transformations
-- [ ] Correctness guarantees
+==== Phase 2: Advanced Features (3 months)
 
-## The Hyperpolymath Compiler Family
+* [ ] Protocol bridging (GraphQL ↔ REST ↔ gRPC)
+* [ ] Multi-protocol federation
+* [ ] Caching layer
+* [ ] Validation (Nickel contracts)
 
-```
+==== Phase 3: Formal Verification (6 months)
+
+* [ ] Idris2 proofs of protocol compatibility
+* [ ] Type-safe transformations
+* [ ] Correctness guarantees
+
+=== The Hyperpolymath Compiler Family
+
+....
 1. UXF - Extensions → Many platforms
 2. HAR - Infrastructure → Many IaC tools
 3. HTTP-Gateway - Policies → Many enforcement backends
 4. API Compiler - APIs → Many protocols (NEW!)
-```
+....
 
-All sharing:
-- A2ML (source format)
-- K9-SVC (self-validation)
-- Nickel (type safety)
-- Idris2 (formal proofs)
+All sharing: - A2ML (source format) - K9-SVC (self-validation) - Nickel
+(type safety) - Idris2 (formal proofs)
 
-## Next Steps
+=== Next Steps
 
-Want me to:
-1. **Create API-compiler repo** using rsr-template-repo?
-2. **Prototype live interpreter** (GraphQL + REST from one source)?
-3. **Show how it integrates** with HAR + HTTP-Gateway?
-4. **Build proof-of-concept** for a real API?
+Want me to: 1. *Create API-compiler repo* using rsr-template-repo? 2.
+*Prototype live interpreter* (GraphQL + REST from one source)? 3. *Show
+how it integrates* with HAR + HTTP-Gateway? 4. *Build proof-of-concept*
+for a real API?

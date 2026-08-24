@@ -1,12 +1,12 @@
-<!-- SPDX-License-Identifier: CC-BY-SA-4.0 -->
-# Universal Extension Architecture
-## From One Source to ALL Platforms
+== Universal Extension Architecture
 
-### The Vision
+=== From One Source to ALL Platforms
 
-**One pre-manifest source** → **Multiple platform targets**
+==== The Vision
 
-```
+*One pre-manifest source* → *Multiple platform targets*
+
+....
                     ┌─────────────────────────┐
                     │ Universal Pre-Manifest  │
                     │ (extension.uxf)         │
@@ -39,19 +39,20 @@
 │ Zotero  │      │VSCode   │      │WordPress│    │Obsidian │
 │ Plugin  │      │Extension│      │ Plugin  │    │ Plugin  │
 └─────────┘      └─────────┘      └─────────┘    └─────────┘
-```
+....
 
-## Level 1: Manifest Versions (EASY)
+=== Level 1: Manifest Versions (EASY)
 
-### Problem
-Firefox deprecated Manifest V2, moving to V3:
-- Background pages → Service workers
-- `permissions` → `permissions` + `host_permissions`
-- Different CSP rules
+==== Problem
 
-### Solution: Dual-Target Generation
+Firefox deprecated Manifest V2, moving to V3: - Background pages →
+Service workers - `+permissions+` → `+permissions+` +
+`+host_permissions+` - Different CSP rules
 
-```nickel
+==== Solution: Dual-Target Generation
+
+[source,nickel]
+----
 # Universal format
 let extension = {
   metadata = {
@@ -83,25 +84,33 @@ let generate_mv3 = fun ext => {
   permissions = ext.permissions.api,
   host_permissions = ext.permissions.host,
 }
-```
+----
 
-**Result:** One source → MV2 + MV3 manifests
+*Result:* One source → MV2 + MV3 manifests
 
-## Level 2: Browser Targets (MEDIUM)
+=== Level 2: Browser Targets (MEDIUM)
 
-### Problem
+==== Problem
+
 Different browsers have incompatible APIs:
 
-| Feature | Firefox | Chrome | Safari |
-|---------|---------|--------|--------|
-| Namespace | `browser.*` | `chrome.*` | `webkit.*` |
-| Sidebar | ✅ `sidebar_action` | ❌ None | ❌ None |
-| Promises | ✅ Native | ⚠️ Callbacks | ⚠️ Callbacks |
-| Manifest key | `browser_specific_settings` | None | `safari_specific_settings` |
+[width="100%",cols="28%,26%,23%,23%",options="header",]
+|===
+|Feature |Firefox |Chrome |Safari
+|Namespace |`+browser.*+` |`+chrome.*+` |`+webkit.*+`
 
-### Solution: Cross-Browser Adapter
+|Sidebar |✅ `+sidebar_action+` |❌ None |❌ None
 
-```nickel
+|Promises |✅ Native |⚠️ Callbacks |⚠️ Callbacks
+
+|Manifest key |`+browser_specific_settings+` |None
+|`+safari_specific_settings+`
+|===
+
+==== Solution: Cross-Browser Adapter
+
+[source,nickel]
+----
 # Universal API surface
 let extension = {
   ui = {
@@ -151,29 +160,34 @@ let safari_manifest = {
     },
   },
 }
-```
+----
 
-**Result:** One source → Firefox XPI + Chrome CRX + Safari extension
+*Result:* One source → Firefox XPI + Chrome CRX + Safari extension
 
-## Level 3: Different Ecosystems (HARD)
+=== Level 3: Different Ecosystems (HARD)
 
-### Problem
+==== Problem
+
 Completely different plugin architectures:
 
-| Platform | Language | Format | Runtime |
-|----------|----------|--------|---------|
-| Firefox | JavaScript | XPI | Gecko |
-| Chrome | JavaScript | CRX | Chromium |
-| Zotero | JavaScript | XPI | Firefox-based |
-| WordPress | PHP | ZIP | Apache/Nginx |
-| VSCode | TypeScript | VSIX | Electron |
-| Obsidian | TypeScript | ZIP | Electron |
+[cols=",,,",options="header",]
+|===
+|Platform |Language |Format |Runtime
+|Firefox |JavaScript |XPI |Gecko
+|Chrome |JavaScript |CRX |Chromium
+|Zotero |JavaScript |XPI |Firefox-based
+|WordPress |PHP |ZIP |Apache/Nginx
+|VSCode |TypeScript |VSIX |Electron
+|Obsidian |TypeScript |ZIP |Electron
+|===
 
-### Solution: Abstract Functionality Model
+==== Solution: Abstract Functionality Model
 
-Instead of describing HOW (implementation), describe WHAT (functionality):
+Instead of describing HOW (implementation), describe WHAT
+(functionality):
 
-```a2ml
+[source,a2ml]
+----
 # Universal Extension Format (UXF)
 @extension:
 name: FireFlag
@@ -243,13 +257,14 @@ wordpress:
   php_version: 8.1
   hooks: [admin_menu, admin_init]
 @end
-```
+----
 
-### Target Adapters
+==== Target Adapters
 
-#### 1. Zotero Adapter
+===== 1. Zotero Adapter
 
-```javascript
+[source,javascript]
+----
 // Generated Zotero plugin structure
 // fireflag-zotero/
 // ├── chrome.manifest
@@ -276,11 +291,12 @@ pane = {
     script: "fireflag.js",
   }
 }
-```
+----
 
-#### 2. WordPress Adapter
+===== 2. WordPress Adapter
 
-```php
+[source,php]
+----
 <?php
 /**
  * Plugin Name: FireFlag
@@ -330,11 +346,12 @@ class FireFlag_Plugin {
         }
     }
 }
-```
+----
 
-#### 3. VSCode Adapter
+===== 3. VSCode Adapter
 
-```typescript
+[source,typescript]
+----
 // Generated VSCode extension structure
 // fireflag-vscode/
 // ├── package.json (generated manifest)
@@ -398,25 +415,26 @@ export function activate(context: vscode.ExtensionContext) {
         )
     );
 }
-```
+----
 
-## Level 4: The Ultimate - Cross-Platform Plugins (VERY HARD)
+=== Level 4: The Ultimate - Cross-Platform Plugins (VERY HARD)
 
-### Can ONE source generate:
-- ✅ Firefox extension (XPI)
-- ✅ Chrome extension (CRX)
-- ✅ Safari extension
-- ✅ Zotero plugin
-- ✅ WordPress plugin
-- ✅ VSCode extension
-- ✅ Obsidian plugin
-- ✅ Electron app?
+==== Can ONE source generate:
 
-**YES, with the right abstractions!**
+* ✅ Firefox extension (XPI)
+* ✅ Chrome extension (CRX)
+* ✅ Safari extension
+* ✅ Zotero plugin
+* ✅ WordPress plugin
+* ✅ VSCode extension
+* ✅ Obsidian plugin
+* ✅ Electron app?
 
-### The Key: Layered Architecture
+*YES, with the right abstractions!*
 
-```
+==== The Key: Layered Architecture
+
+....
 ┌─────────────────────────────────────────────┐
 │ Layer 4: Platform-Specific Code            │
 │ (Generated: manifest.json, PHP, TS, etc.)  │
@@ -436,22 +454,35 @@ export function activate(context: vscode.ExtensionContext) {
 │ Layer 1: Universal Extension Format (UXF) │
 │ (A2ML + K9-SVC source)                     │
 └─────────────────────────────────────────────┘
-```
+....
 
-### Abstract Capabilities Map to Platform APIs
+==== Abstract Capabilities Map to Platform APIs
 
-| Abstract Capability | Firefox | Chrome | WordPress | VSCode |
-|---------------------|---------|--------|-----------|--------|
-| **Storage** | `browser.storage.local` | `chrome.storage.local` | `update_option()` | `globalState` |
-| **UI: Popup** | `action.popup` | `action.popup` | Admin page | Quick pick |
-| **UI: Sidebar** | `sidebar_action` | `side_panel` | Widget | Webview panel |
-| **UI: Settings** | `options_ui` | `options_page` | Settings API | Configuration |
-| **Permissions** | `permissions` API | `chrome.permissions` | Capabilities | N/A (all granted) |
-| **Background** | Service worker | Service worker | Admin init hook | `activate()` |
+[width="100%",cols="38%,15%,14%,19%,14%",options="header",]
+|===
+|Abstract Capability |Firefox |Chrome |WordPress |VSCode
+|*Storage* |`+browser.storage.local+` |`+chrome.storage.local+`
+|`+update_option()+` |`+globalState+`
 
-### Implementation Strategy
+|*UI: Popup* |`+action.popup+` |`+action.popup+` |Admin page |Quick pick
 
-```nickel
+|*UI: Sidebar* |`+sidebar_action+` |`+side_panel+` |Widget |Webview
+panel
+
+|*UI: Settings* |`+options_ui+` |`+options_page+` |Settings API
+|Configuration
+
+|*Permissions* |`+permissions+` API |`+chrome.permissions+`
+|Capabilities |N/A (all granted)
+
+|*Background* |Service worker |Service worker |Admin init hook
+|`+activate()+`
+|===
+
+==== Implementation Strategy
+
+[source,nickel]
+----
 # Universal Extension Format compiler
 let compile_uxf = fun source target =>
   let abstract = parse_uxf(source) in
@@ -473,11 +504,12 @@ let targets = [
 
 let build_all = fun uxf_source =>
   std.array.map (fun target => compile_uxf(uxf_source, target)) targets
-```
+----
 
-## Real-World Example: FireFlag UXF
+=== Real-World Example: FireFlag UXF
 
-```a2ml
+[source,a2ml]
+----
 @extension:fireflag
 version: 0.1.0
 type: browser-configuration-manager
@@ -553,11 +585,12 @@ vscode:
   provide-ui.configuration → Contribution points
   provide-ui.developer → Debug console integration
 @end
-```
+----
 
-## Build Pipeline
+=== Build Pipeline
 
-```bash
+[source,bash]
+----
 # One command, multiple targets
 just build-universal
 
@@ -577,24 +610,29 @@ extension/dist/
 │   └── fireflag-vscode-0.1.0.vsix
 └── obsidian/
     └── fireflag-obsidian-0.1.0.zip
-```
+----
 
-## Challenges & Solutions
+=== Challenges & Solutions
 
-### Challenge 1: Paradigm Mismatches
-**Problem:** WordPress uses PHP + hooks, browsers use JavaScript + events
+==== Challenge 1: Paradigm Mismatches
 
-**Solution:** Abstract to "lifecycle events"
-```
+*Problem:* WordPress uses PHP + hooks, browsers use JavaScript + events
+
+*Solution:* Abstract to "`lifecycle events`"
+
+....
 browser.runtime.onInstalled → PHP register_activation_hook
 browser.storage.onChange → WordPress update_option hook
-```
+....
 
-### Challenge 2: API Incompatibilities
-**Problem:** Firefox has `sidebar_action`, Chrome has `side_panel`
+==== Challenge 2: API Incompatibilities
 
-**Solution:** Feature detection + graceful degradation
-```nickel
+*Problem:* Firefox has `+sidebar_action+`, Chrome has `+side_panel+`
+
+*Solution:* Feature detection + graceful degradation
+
+[source,nickel]
+----
 let generate_sidebar = fun target =>
   if target == "firefox" then
     { sidebar_action = ... }
@@ -602,13 +640,17 @@ let generate_sidebar = fun target =>
     { side_panel = ... }
   else
     null  # Omit if not supported
-```
+----
 
-### Challenge 3: Different Security Models
-**Problem:** Browsers have permissions, WordPress has capabilities, VSCode has no permissions
+==== Challenge 3: Different Security Models
 
-**Solution:** Abstract to "required access"
-```a2ml
+*Problem:* Browsers have permissions, WordPress has capabilities, VSCode
+has no permissions
+
+*Solution:* Abstract to "`required access`"
+
+[source,a2ml]
+----
 @access:
 - storage: local
 - settings: browser-configuration
@@ -618,12 +660,14 @@ let generate_sidebar = fun target =>
 # Firefox: permissions: ["storage", "browserSettings"]
 # WordPress: capability: "manage_options"
 # VSCode: (no manifest, all access granted)
-```
+----
 
-## Future: Universal Plugin Ecosystem
+=== Future: Universal Plugin Ecosystem
 
 Imagine a world where:
-```bash
+
+[source,bash]
+----
 # One source
 extension.uxf
 
@@ -632,16 +676,15 @@ just compile --all
 
 # Deployed everywhere
 just publish firefox chrome safari zotero wordpress vscode obsidian
-```
+----
 
-**One codebase, all platforms.**
+*One codebase, all platforms.*
 
-This is the **"Write Once, Run Anywhere"** dream for extensions!
+This is the *"`Write Once, Run Anywhere`"* dream for extensions!
 
-## Next Steps
+=== Next Steps
 
-Want me to:
-1. **Prototype Level 1** (MV2/MV3 generator for FireFlag)?
-2. **Prototype Level 2** (Firefox + Chrome from one source)?
-3. **Design full UXF spec** (universal extension format)?
-4. **Build proof-of-concept** (one source → 3 platforms)?
+Want me to: 1. *Prototype Level 1* (MV2/MV3 generator for FireFlag)? 2.
+*Prototype Level 2* (Firefox + Chrome from one source)? 3. *Design full
+UXF spec* (universal extension format)? 4. *Build proof-of-concept* (one
+source → 3 platforms)?

@@ -1,0 +1,210 @@
+== Code of Conduct
+
+=== Our Pledge
+
+We as members, contributors, and leaders pledge to make participation in
+Universal Extension Format a harassment-free experience for everyone,
+regardless of age, body size, visible or invisible disability,
+ethnicity, sex characteristics, gender identity and expression, level of
+experience, education, socio-economic status, nationality, personal
+appearance, race, caste, colour, religion, or sexual identity and
+orientation.
+
+We pledge to act and interact in ways that contribute to an open,
+welcoming, diverse, inclusive, and healthy community.
+
+We recognise that a thriving open source community requires
+*psychological safety* – an environment where people can contribute, ask
+questions, make mistakes, and learn without fear of ridicule or
+retaliation.
+
+'''''
+
+=== Our Standards
+
+==== Expected Behaviour
+
+The following behaviours contribute to a positive environment:
+
+*Communication* - Using welcoming and inclusive language - Being
+respectful of differing viewpoints and experiences - Giving and
+gracefully accepting constructive feedback - Assuming good intent while
+addressing impact - Communicating clearly and patiently, especially with
+newcomers
+
+*Collaboration* - Focusing on what is best for the community - Showing
+empathy and kindness toward other community members - Being
+collaborative rather than competitive - Mentoring and supporting less
+experienced contributors - Celebrating others’ contributions and
+successes
+
+*Professionalism* - Accepting responsibility and apologising to those
+affected by our mistakes - Learning from the experience and avoiding
+repetition - Respecting others’ time and attention - Staying on topic in
+project spaces - Following project guidelines and conventions
+
+*Accessibility* - Using plain language and avoiding unnecessary jargon -
+Providing alt text for images and transcripts for audio/video - Being
+patient with those using assistive technologies - Accommodating
+different communication styles and needs - Recognising that not everyone
+communicates the same way
+
+==== Unacceptable Behaviour
+
+The following behaviours are considered harassment and are unacceptable:
+
+*Harassment* - The use of sexualised language or imagery, and sexual
+attention or advances of any kind - Trolling, insulting or derogatory
+comments, and personal or political attacks - Public or private
+harassment - Deliberate intimidation, stalking, or following (online or
+in-person) - Unwelcome physical contact or simulated physical contact
+(e.g., emoji) - Sustained disruption of talks, events, or online
+discussions
+
+*Discrimination* - Discriminatory jokes and language - Posting or
+threatening to post others’ personally identifying information
+("`doxing`") - Advocating for, or encouraging, any of the above
+behaviour - Microaggressions – subtle, often unintentional,
+discriminatory comments or actions
+
+*Professional Misconduct* - Publishing others’ private information
+without explicit permission - Misrepresenting affiliation or
+contributions - Plagiarism or claiming credit for others’ work -
+Retaliating against anyone who reports a Code of Conduct violation -
+Other conduct which could reasonably be considered inappropriate in a
+professional setting
+
+'''''
+
+=== Scope
+
+This Code of Conduct applies within all community spaces, including:
+
+*Online Spaces* - Repository discussions, issues, and pull/merge
+requests - Project chat channels (Matrix, Discord, Slack, IRC) - Mailing
+lists and forums - Social media when representing the project - Video
+calls and virtual meetings
+
+*In-Person Spaces* - Conferences, meetups, and events - Workshops and
+training sessions - Any gathering where you represent the project
+
+'''''
+
+=== Enforcement
+
+==== Reporting
+
+If you experience or witness unacceptable behaviour, or have any other
+concerns, please report it as soon as possible.
+
+*How to Report*
+
+[width="99%",cols="30%,33%,37%",options="header",]
+|===
+|Method |Details |Best For
+|*Email* |j.d.a.jewell@open.ac.uk |Detailed reports, sensitive matters
+
+|*Private Message* |Contact any maintainer directly |Quick questions,
+minor issues
+|===
+
+*What Happens Next*
+
+[arabic]
+. You will receive acknowledgment within *48 hours*
+. The maintainer team will review the report
+. We may ask for additional information
+. We will determine appropriate action
+. We will inform you of the outcome (respecting others’ privacy)
+
+==== Confidentiality
+
+All reports will be handled with discretion:
+
+* Reporter identity is protected by default
+* Details are shared only with those who need to know
+* We will ask before naming you in any communication
+* Anonymous reports are accepted and investigated
+
+'''''
+
+=== Enforcement Guidelines
+
+The maintainer team will follow these guidelines in determining
+consequences:
+
+==== 1. Correction
+
+*Community Impact*: Use of inappropriate language or other behaviour
+deemed unprofessional or unwelcome.
+
+*Consequence*: A private, written warning providing clarity around the
+nature of the violation and an explanation of why the behaviour was
+inappropriate. A public apology may be requested.
+
+==== 2. Warning
+
+*Community Impact*: A violation through a single incident or series of
+actions.
+
+*Consequence*: A warning with consequences for continued behaviour. No
+interaction with the people involved for a specified period.
+
+==== 3. Temporary Ban
+
+*Community Impact*: A serious violation of community standards,
+including sustained inappropriate behaviour.
+
+*Consequence*: A temporary ban from any sort of interaction or public
+communication with the community for a specified period.
+
+==== 4. Permanent Ban
+
+*Community Impact*: Demonstrating a pattern of violation of community
+standards, including sustained inappropriate behaviour, harassment of an
+individual, or aggression toward or disparagement of classes of
+individuals.
+
+*Consequence*: A permanent ban from any sort of public interaction
+within the community.
+
+'''''
+
+=== Acknowledgments
+
+This Code of Conduct is adapted from:
+
+* https://www.contributor-covenant.org/[Contributor Covenant], version
+2.1
+* https://www.djangoproject.com/conduct/[Django Code of Conduct]
+* https://www.rust-lang.org/policies/code-of-conduct[Rust Code of
+Conduct]
+* https://www.python.org/psf/conduct/[Python Community Code of Conduct]
+
+We thank these communities for their leadership in creating welcoming
+spaces.
+
+'''''
+
+=== Questions?
+
+If you have questions about this Code of Conduct:
+
+* Open a
+https://github.com/hyperpolymath/universal-extension-format/discussions[Discussion]
+(for general questions)
+* Email j.d.a.jewell@open.ac.uk (for private questions)
+* Contact any maintainer directly
+
+'''''
+
+=== Summary
+
+*Be kind. Be respectful. Be collaborative.*
+
+We’re all here because we care about this project. Let’s make it a place
+where everyone can do their best work.
+
+'''''
+
+Last updated: 2026 - Based on Contributor Covenant 2.1
