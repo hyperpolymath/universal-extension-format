@@ -124,7 +124,7 @@ UXF implements the **"compile-to-many" pattern**:
 
 UXF is a concept. Nothing in this repository is formally verified. The
 compile-to-many pipeline (IR, adapters, generators) is not built or tested
-yet; the Zig FFI template in `ffi/zig/` has lifecycle tests only. Status words below follow standards
+yet; the Zig FFI template in `ffi/zig/` has only lifecycle, error-handling and version tests. Status words below follow standards
 `3-practice/PROOF-POLICY.adoc` §5.
 
 === ECHIDNA property tests: not evidence for UXF
@@ -289,9 +289,9 @@ Inspired by:
 
 ---
 
-**Status:** Concept with formal validation
+**Status:** Concept. Nothing is formally verified; see <<validation-status>>.
 
-**Not vaporware - backed by property tests and existing implementations.**
+**Related projects exist (HAR, HTTP-Gateway, protocol-squisher). The cited ECHIDNA property tests do not test UXF.**
 
 
 == Architecture

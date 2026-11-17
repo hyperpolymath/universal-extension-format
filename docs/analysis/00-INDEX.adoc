@@ -172,13 +172,13 @@ and the failing eighth test is not named in the original record. The
 meanings given after each name below were the original, mistaken reading.
 
 ....
-✅ parse_serialize_roundtrip - IR ↔ Platform code reversibility
-✅ prover_is_deterministic - Same source → same target
-✅ confidence_in_valid_range - Type safety guarantees
-✅ proof_tree_grows_monotonically - Structure preservation
-✅ premises_dont_make_proof_harder - Semantic correctness
-✅ commutativity_is_symmetric - Property preservation
-✅ confidence_scores_sum_to_one - Statistical soundness
+parse_serialize_roundtrip - IR ↔ Platform code reversibility
+prover_is_deterministic - Same source → same target
+confidence_in_valid_range - Type safety guarantees
+proof_tree_grows_monotonically - Structure preservation
+premises_dont_make_proof_harder - Semantic correctness
+commutativity_is_symmetric - Property preservation
+confidence_scores_sum_to_one - Statistical soundness
 ....
 
 *Verdict:* These results are `tested-only` evidence about ECHIDNA. They do
@@ -359,16 +359,16 @@ interpreter
 
 === Potential Applications
 
-==== Viable in practice (existing projects; the ECHIDNA tests do not cover UXF):
+==== Existing projects and planned applications (the ECHIDNA tests do not cover UXF):
 
 [arabic]
-. ✅ *Browser extensions* → Many platforms (UXF)
+. *Browser extensions* → Many platforms (UXF - planned, not built)
 . ✅ *Infrastructure* → Many IaC tools (HAR - already exists)
 . ✅ *HTTP policies* → Many enforcement backends (HTTP-Gateway - already
 exists)
 . ✅ *Serialization formats* → Bidirectional adapters (protocol-squisher
 - already exists)
-. ✅ *API protocols* → GraphQL/REST/gRPC (API Compiler - proposed)
+. *API protocols* → GraphQL/REST/gRPC (API Compiler - proposed)
 
 ==== Breakthrough Discovery:
 
@@ -437,8 +437,8 @@ constraints
 
 === Validation Evidence
 
-* *ECHIDNA property tests:* 7/8 PASSED ✅
-* *Idris2 formal proofs:* Available via idris2-echidna
+* *ECHIDNA property tests:* 7/8 passed. They test ECHIDNA's prover helpers, not UXF.
+* *Idris2 formal proofs:* none for UXF yet (planned)
 * *Existing implementations:* HAR, HTTP-Gateway (working in production)
 * *Test suite location:* `+$REPOS_DIR/echidna/tests/property_tests.rs+`
 * *Proof framework:* `+$REPOS_DIR/idris2-echidna/+`
