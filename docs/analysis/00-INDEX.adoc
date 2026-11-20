@@ -1,5 +1,11 @@
 == Analysis Index: The "`Compile-to-Many`" Pattern
 
+NOTE: Status correction, 2026-11-17. This index is a design analysis. Where it
+says "proven", "provably correct" or "validated", read "design goal": nothing
+in UXF is formally verified, and the ECHIDNA property tests cited below test
+ECHIDNA's own prover helpers, not UXF code. See the README section
+"Validation status".
+
 This directory contains the comprehensive analysis of the
 "`compile-to-many`" architectural pattern and its applications across
 multiple domains.
@@ -7,10 +13,10 @@ multiple domains.
 === Executive Summary
 
 *Pattern validated:* Abstract IR → Platform-specific code generation
-*Test validation:* ✅ ECHIDNA property tests confirm soundness *Novel
+*Test validation:* none for UXF yet (the ECHIDNA property tests exercise ECHIDNA, not UXF) *Novel
 insight:* Pattern extends to language syntax/semantics/type
-interoperability *Verdict:* Sound, proven, and potentially
-groundbreaking
+interoperability *Verdict:* Promising and potentially
+groundbreaking; not yet built, tested or proven
 
 '''''
 
@@ -155,30 +161,33 @@ months MVP
 
 === Validation & Testing
 
-==== 7. ECHIDNA Property Tests ✅
+==== 7. ECHIDNA Property Tests (not UXF tests)
 
 *Test Suite:* `+$REPOS_DIR/echidna/tests/property_tests.rs+`
 
 *Results:* 7 of 8 tests PASSED
 
-*Critical invariants validated:*
+*What these test:* ECHIDNA's own prover helpers. They exercise no UXF code,
+and the failing eighth test is not named in the original record. The
+meanings given after each name below were the original, mistaken reading.
 
 ....
-✅ parse_serialize_roundtrip - IR ↔ Platform code reversibility
-✅ prover_is_deterministic - Same source → same target
-✅ confidence_in_valid_range - Type safety guarantees
-✅ proof_tree_grows_monotonically - Structure preservation
-✅ premises_dont_make_proof_harder - Semantic correctness
-✅ commutativity_is_symmetric - Property preservation
-✅ confidence_scores_sum_to_one - Statistical soundness
+parse_serialize_roundtrip - IR ↔ Platform code reversibility
+prover_is_deterministic - Same source → same target
+confidence_in_valid_range - Type safety guarantees
+proof_tree_grows_monotonically - Structure preservation
+premises_dont_make_proof_harder - Semantic correctness
+commutativity_is_symmetric - Property preservation
+confidence_scores_sum_to_one - Statistical soundness
 ....
 
-*Verdict:* The "`compile-to-many`" pattern is *formally testable and
-provably correct*
+*Verdict:* These results are `tested-only` evidence about ECHIDNA. They do
+not show that the "`compile-to-many`" pattern is provably correct.
 
 *Idris2 Integration:* `+$REPOS_DIR/idris2-echidna/+` - Dependent-type
 proofs of transformation correctness - FFI to 12 theorem provers (Z3,
-CVC5, Coq, Lean, Isabelle, etc.) - Formal soundness guarantees
+CVC5, Coq, Lean, Isabelle, etc.) - Formal soundness guarantees (all planned;
+none exists yet)
 
 '''''
 
@@ -350,16 +359,16 @@ interpreter
 
 === Potential Applications
 
-==== Proven Viable (via ECHIDNA tests):
+==== Existing projects and planned applications (the ECHIDNA tests do not cover UXF):
 
 [arabic]
-. ✅ *Browser extensions* → Many platforms (UXF)
+. *Browser extensions* → Many platforms (UXF - planned, not built)
 . ✅ *Infrastructure* → Many IaC tools (HAR - already exists)
 . ✅ *HTTP policies* → Many enforcement backends (HTTP-Gateway - already
 exists)
 . ✅ *Serialization formats* → Bidirectional adapters (protocol-squisher
 - already exists)
-. ✅ *API protocols* → GraphQL/REST/gRPC (API Compiler - proposed)
+. *API protocols* → GraphQL/REST/gRPC (API Compiler - proposed)
 
 ==== Breakthrough Discovery:
 
@@ -428,8 +437,8 @@ constraints
 
 === Validation Evidence
 
-* *ECHIDNA property tests:* 7/8 PASSED ✅
-* *Idris2 formal proofs:* Available via idris2-echidna
+* *ECHIDNA property tests:* 7/8 passed. They test ECHIDNA's prover helpers, not UXF.
+* *Idris2 formal proofs:* none for UXF yet (planned)
 * *Existing implementations:* HAR, HTTP-Gateway (working in production)
 * *Test suite location:* `+$REPOS_DIR/echidna/tests/property_tests.rs+`
 * *Proof framework:* `+$REPOS_DIR/idris2-echidna/+`
@@ -438,13 +447,12 @@ constraints
 
 === Conclusion
 
-The "`compile-to-many`" pattern is: - ✅ *Sound* (ECHIDNA tests validate
-invariants) - ✅ *Proven* (HAR, HTTP-Gateway, protocol-squisher already
+The "`compile-to-many`" pattern is: - ✅ *Plausible* (no UXF tests yet; the ECHIDNA tests cover ECHIDNA) - ✅ *Works in practice* (HAR, HTTP-Gateway, protocol-squisher already
 work) - ✅ *Feasible* (UXF for browsers is realistic) - 🎯 *Potentially
 revolutionary* (language interoperability breakthrough)
 
-*Most importantly:* Not LLM bullshit - formally tested and
-mathematically proven. 🎉
+*Most importantly:* nothing here is formally tested or proven yet. The
+proofs are the plan.
 
 '''''
 

@@ -15,9 +15,7 @@ Write your browser extension, IDE plugin, or CMS add-on once in a platform-agnos
 ____
 **The Pattern:** Abstract IR → Platform-specific code generation
 
-**Validated by:** ECHIDNA property tests (7/8 PASSED ✅)
-
-**Not LLM bullshit - formally tested and mathematically proven.**
+**Status:** concept. Nothing is formally verified, and the compile-to-many pipeline is not built or tested yet; see <<validation-status>>.
 ____
 
 toc::[]
@@ -116,35 +114,40 @@ UXF implements the **"compile-to-many" pattern**:
 └────────────────────────────────────────┘
 ----
 
-**This pattern is proven** - you're already using it in:
+**This pattern works in practice** - you're already using it in:
 - **hybrid-automation-router (HAR):** Ansible ↔ Salt ↔ Terraform
 - **http-capability-gateway:** HTTP policies → Nginx/Apache/Envoy
 - **protocol-squisher:** Serialization format adapters
 
-== Formal Validation
+[[validation-status]]
+== Validation status
 
-UXF isn't just theory - it's **formally tested**:
+UXF is a concept. Nothing in this repository is formally verified. The
+compile-to-many pipeline (IR, adapters, generators) is not built or tested
+yet; the Zig FFI template in `ffi/zig/` has only lifecycle, error-handling and version tests. Status words below follow standards
+`3-practice/PROOF-POLICY.adoc` §5.
 
-=== ECHIDNA Property Tests ✅
+=== ECHIDNA property tests: not evidence for UXF
 
-Test suite: `repos/echidna/tests/property_tests.rs`
+Earlier versions of this README cited `echidna/tests/property_tests.rs`
+("7 of 8 tests PASSED") and concluded that the compile-to-many pattern is
+"provably correct". That conclusion does not follow:
 
-**Results:** 7 of 8 tests PASSED
+* Those are property tests of ECHIDNA's own prover helpers
+  (`parse_serialize_roundtrip`, `prover_is_deterministic`,
+  `confidence_in_valid_range`, `proof_tree_grows_monotonically`, …).
+  They exercise no UXF code.
+* Property tests are bounded, sampled checks: `tested-only`, never `proven`.
+* One of the eight did not pass, and the original record does not say which.
 
-**Critical invariants validated:**
-- ✅ **parse_serialize_roundtrip** - IR ↔ Platform code reversibility
-- ✅ **prover_is_deterministic** - Same source → same target
-- ✅ **confidence_in_valid_range** - Type safety guarantees
-- ✅ **proof_tree_grows_monotonically** - Structure preservation
+=== Idris2 proofs: planned (`open`)
 
-**Verdict:** The "compile-to-many" pattern is **provably correct**.
-
-=== Idris2 Formal Proofs
-
-Integration via `repos/idris2-echidna/`:
-- Dependent-type proofs of transformation correctness
-- FFI to 12 theorem provers (Z3, CVC5, Coq, Lean, Isabelle, etc.)
-- Formal soundness guarantees
+The goal is dependent-type proofs of transformation correctness, possibly
+through `idris2-echidna` and its prover FFI. None exists yet. `src/abi/`
+holds three Idris2 ABI template modules (`Types`, `Layout`, `Foreign`). They
+state no transformation theorem, and they do not type-check as laid out: their
+module names (`UXF.ABI.*`, `UniversalExtensionFormat.ABI.*`) do not match
+their file paths. There are no formal soundness guarantees today.
 
 == Documentation
 
@@ -264,7 +267,7 @@ One abstract IR generates:
 - Julia types + functions
 - Gleam types + functions
 
-**All proven semantically equivalent via Idris2.**
+**The goal: all proven semantically equivalent via Idris2.** This is planned; no such proof exists yet.
 
 This could eliminate manual FFI, unsafe blocks, and brittle bindings across the entire software ecosystem.
 
@@ -286,9 +289,9 @@ Inspired by:
 
 ---
 
-**Status:** Concept with formal validation
+**Status:** Concept. Nothing is formally verified; see <<validation-status>>.
 
-**Not vaporware - backed by property tests and existing implementations.**
+**Related projects exist (HAR, HTTP-Gateway, protocol-squisher). The cited ECHIDNA property tests do not test UXF.**
 
 
 == Architecture
