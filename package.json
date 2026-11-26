@@ -1,0 +1,7 @@
+{
+  "name": "universal-extension-format",
+  "private": true,
+  "devDependencies": {
+    "prettier": "3.10.1"
+  }
+}
